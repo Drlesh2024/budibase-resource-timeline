@@ -1,0 +1,42 @@
+{
+  "name": "resourceTimeline",
+  "friendlyName": "Resource Timeline",
+  "icon": "Calendar",
+  "styles": ["padding", "margin", "border", "background", "size"],
+  "showSettingsBar": true,
+  "settings": [
+    {
+      "type": "dataProvider",
+      "label": "Workers",
+      "key": "workersProvider",
+      "showInBar": true,
+      "barTitle": "Workers"
+    },
+    {
+      "type": "dataProvider",
+      "label": "Assignments",
+      "key": "assignmentsProvider",
+      "showInBar": true,
+      "barTitle": "Assignments"
+    },
+    {
+      "type": "number",
+      "label": "Height (px)",
+      "key": "height",
+      "defaultValue": 650,
+      "min": 200,
+      "max": 2000,
+      "showInBar": true,
+      "barTitle": "Height"
+    }
+  ],
+  "context": [
+    {
+      "type": "static",
+      "values": [
+        { "label": "Selected Assignment ID", "key": "selectedAssignmentId", "type": "string" }
+      ]
+    }
+  ],
+  "info": "Bind Workers + Assignments via Data Providers. Outputs selectedAssignmentId when an item is clicked."
+}
