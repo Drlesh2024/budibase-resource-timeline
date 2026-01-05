@@ -8,8 +8,5 @@
   "dependencies": {
     "vis-data": "^7.1.6",
     "vis-timeline": "^7.7.3"
-  },
-  "devDependencies": {
-    "@budibase/bb-plugin-scripts": "^3.23.0"
   }
 }
