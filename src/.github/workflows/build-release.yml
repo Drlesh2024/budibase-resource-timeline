@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,7 +16,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
+
+      # Wichtig: KEIN npm token, KEIN private registry
+      - name: Ensure public npm registry
+        run: npm config set registry https://registry.npmjs.org/
 
       - name: Install Budibase CLI
         run: npm install -g @budibase/cli
@@ -34,12 +37,12 @@ jobs:
           find . -maxdepth 4 -name "*.tar.gz" -print
           TAR=$(find . -maxdepth 4 -name "*.tar.gz" | head -n 1)
           if [ -z "$TAR" ]; then
-            echo "No tar.gz found. Build failed or output changed."
+            echo "No tar.gz found."
             exit 1
           fi
           echo "TARBALL=$TAR" >> $GITHUB_ENV
 
-      - name: Upload artifact (for manual download)
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: budibase-plugin
